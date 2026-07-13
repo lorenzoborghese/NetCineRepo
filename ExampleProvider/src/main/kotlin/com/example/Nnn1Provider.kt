@@ -2,11 +2,6 @@ package com.example
 
 import com.lagradost.cloudstream3.*
 import com.lagradost.cloudstream3.utils.*
-import com.lagradost.cloudstream3.MainAPIKt.newMovieSearchResponse
-import com.lagradost.cloudstream3.MainAPIKt.newTvSeriesSearchResponse
-import com.lagradost.cloudstream3.MainAPIKt.newMovieLoadResponse
-import com.lagradost.cloudstream3.MainAPIKt.newTvSeriesLoadResponse
-import com.lagradost.cloudstream3.utils.AppUtils.loadExtractor
 import org.jsoup.Jsoup
 
 class Nnn1Provider : MainAPI() {
@@ -55,11 +50,9 @@ class Nnn1Provider : MainAPI() {
                 val epLink = element.selectFirst("a")?.attr("href") ?: return@forEach
                 val epName = element.selectFirst(".epst")?.text() ?: element.selectFirst("a")?.text() ?: ""
                 
-                // Tenta extrair a temporada e o número do episódio pela URL
                 val seasonNumber = url.substringAfter("-season-", "").substringBefore("/").toIntOrNull() ?: 1
                 val episodeNumber = epLink.substringAfter("-episode-", "").substringBefore("/").toIntOrNull()
 
-                // AQUI ESTÁ A CORREÇÃO:
                 val episodeObj = newEpisode(epLink) {
                     this.name = epName
                     this.season = seasonNumber
