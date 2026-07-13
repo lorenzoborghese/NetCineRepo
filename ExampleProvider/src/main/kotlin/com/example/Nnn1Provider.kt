@@ -9,7 +9,7 @@ class Nnn1Provider : MainAPI() {
     override var name = "NetCine Nnn1"
     override val supportedTypes = setOf(TvType.TvSeries, TvType.Movie)
 
-    // 1. FUNÇÃO DE PESQUISA (Search)
+    // 1. FUNÇÃO DE PESQUISA  (Search)
     override suspend fun search(query: String): List<SearchResponse> {
         val url = "$mainUrl/?s=$query"
         val html = app.get(url).text
