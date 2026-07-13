@@ -1,10 +1,10 @@
 [
     {
         "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Korduene_Logo.png",
-        "fileHash": "sha256-06c7a2412c6a6ecbce53b61990b8309887aa80064f80e08cc1e71e18e1d1e579",
+        "fileHash": "sha256-1e63ba747cda3877daa4462c502e5d01c95dd092d6d4f561487403a71cda21fd",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/lorenzoborghese/NetCineRepo",
-        "fileSize": 13734,
+        "fileSize": 12848,
         "status": 1,
         "language": "en",
         "authors": [
