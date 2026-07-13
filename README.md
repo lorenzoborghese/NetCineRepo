@@ -1,12 +1,7 @@
-**⚠️ This is currently under development, dont use it yet if you're not comfortable with constantly merging new changes**
+# NetCine Cloudstream Plugin
 
-# `Cloudstream3 Plugin Repo Template`
+Cloudstream3 plugin para assistir filmes e séries do NetCine diretamente no app Cloudstream.
 
-Template for a [Cloudstream3](https://github.com/recloudstream) plugin repo
-
-**⚠️ Make sure you check "Include all branches" when using this template**
-
- 
 ## Getting started with writing your first plugin
 
 This template includes 1 example plugin.
@@ -14,13 +9,12 @@ This template includes 1 example plugin.
 1. Open the root build.gradle.kts, read the comments and replace all the placeholders
 2. Familiarize yourself with the project structure. Most files are commented
 3. Build or deploy your first plugin using:
-   - Windows: `.\gradlew.bat ExampleProvider:make` or `.\gradlew.bat ExampleProvider:deployWithAdb`
-   - Linux & Mac: `./gradlew ExampleProvider:make` or `./gradlew ExampleProvider:deployWithAdb`
-
+   - Windows: `.\gradlew.bat NetCineProvider:make` or `.\gradlew.bat NetCineProvider:deployWithAdb`
+   - Linux & Mac: `./gradlew NetCineProvider:make` or `./gradlew NetCineProvider:deployWithAdb`
 
 ## Granting All Files Access on Newer Android Devices
 
-For local plugin testing, you need to grant the app "All Files Access" on newer Android devices (Android 11 and above). Here’s how to do it:
+For local plugin testing, you need to grant the app "All Files Access" on newer Android devices (Android 11 and above). Here's how to do it:
 
 ### Using ADB
 
@@ -32,25 +26,19 @@ For local plugin testing, you need to grant the app "All Files Access" on newer 
 
 ### Manually
 
-1. **Open Settings**: Go to your device’s Settings menu.
-
+1. **Open Settings**: Go to your device's Settings menu.
 2. **Navigate to Special Access**:
    - Tap on "Apps & notifications" or "Apps".
    - Select "Special app access" or "Special access".
-
 3. **Select All Files Access**:
    - Tap on "All files access".
    - It may be under the three vertical dots menu towards the top of the screen.
-
 4. **Grant Access to the App**: Find the app in the list and tap on it to toggle it, if it is not already enabled.
-
-6. **Restart the App**: Close and reopen the app to apply the changes.
-
+5. **Restart the App**: Close and reopen the app to apply the changes.
 
 ## License
 
 Everything in this repo is released into the public domain. You may use it however you want with no conditions whatsoever
-
 
 ## Attribution
 

@@ -13,9 +13,9 @@ buildscript {
 
     dependencies {
         classpath("com.android.tools.build:gradle:8.7.3")
-        // CLOUDSTREAM PLUGIN ATUALIZADO: Versão corrigida para evitar o erro do ".com.com"
-        classpath("com.github.recloudstream:gradle:master-SNAPSHOT")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:2.3.0")
+        // Cloudstream gradle plugin which makes everything work and builds plugins
+        classpath("com.github.recloudstream:gradle:-SNAPSHOT")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:2.1.0")
     }
 }
 
@@ -38,11 +38,11 @@ subprojects {
 
     cloudstream {
         // when running through github workflow, GITHUB_REPOSITORY should contain current repository name
-        setRepo(System.getenv("GITHUB_REPOSITORY") ?: "user/repo")
+        setRepo(System.getenv("GITHUB_REPOSITORY") ?: "lorenzoborghese/NetCineRepo")
     }
 
     android {
-        namespace = "com.example"
+        namespace = "com.netcine"
 
         defaultConfig {
             minSdk = 21
