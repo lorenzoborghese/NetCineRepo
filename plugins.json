@@ -1,23 +1,12 @@
 [
-    {
-        "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Korduene_Logo.png",
-        "fileHash": "sha256-1e63ba747cda3877daa4462c502e5d01c95dd092d6d4f561487403a71cda21fd",
-        "apiVersion": 1,
-        "repositoryUrl": "https://github.com/lorenzoborghese/NetCineRepo",
-        "fileSize": 12848,
-        "status": 1,
-        "language": "en",
-        "authors": [
-            "Cloudburst",
-            "Luna712"
-        ],
-        "tvTypes": [
-            "Movie"
-        ],
-        "version": 1,
-        "internalName": "ExampleProvider",
-        "description": "Lorem ipsum",
-        "url": "https://raw.githubusercontent.com/lorenzoborghese/NetCineRepo/builds/ExampleProvider.cs3",
-        "name": "ExampleProvider"
-    }
+  {
+    "name": "NetCine Nnn1",
+    "internalName": "Nnn1Provider",
+    "url": "https://raw.githubusercontent.com/lorenzoborghese/NetCineRepo/builds/ExampleProvider.cs3",
+    "authors": ["Lorenzo"],
+    "version": 1,
+    "api": 1,
+    "description": "Teste",
+    "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Korduene_Logo.png"
+  }
 ]
