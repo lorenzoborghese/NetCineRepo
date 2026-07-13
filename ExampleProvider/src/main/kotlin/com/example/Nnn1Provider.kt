@@ -1,11 +1,11 @@
 package com.example
 
 import com.lagradost.cloudstream3.*
+import com.lagradost.cloudstream3.utils.*
 import com.lagradost.cloudstream3.MainAPIKt.newMovieSearchResponse
 import com.lagradost.cloudstream3.MainAPIKt.newTvSeriesSearchResponse
 import com.lagradost.cloudstream3.MainAPIKt.newMovieLoadResponse
 import com.lagradost.cloudstream3.MainAPIKt.newTvSeriesLoadResponse
-import com.lagradost.cloudstream3.utils.*
 import com.lagradost.cloudstream3.utils.AppUtils.loadExtractor
 import org.jsoup.Jsoup
 
@@ -40,7 +40,7 @@ class Nnn1Provider : MainAPI() {
     }
 
     // 2. FUNÇÃO DE CARREGAMENTO (Load)
-    override suspend fun load(url: String): LoadResponse? {
+    override suspend fun load(url: String): LoadResponse {
         val html = app.get(url).text
         val document = Jsoup.parse(html)
 
@@ -48,7 +48,7 @@ class Nnn1Provider : MainAPI() {
         val poster = document.selectFirst(".poster img")?.attr("src")
         val description = document.selectFirst(".wp-content p")?.text()
 
-        if (url.contains("/tvshows/")) {
+        return if (url.contains("/tvshows/")) {
             val episodes = mutableListOf<Episode>()
             
             document.select(".episodios li").forEach { element ->
@@ -58,20 +58,22 @@ class Nnn1Provider : MainAPI() {
                 val seasonNumber = url.substringAfter("-season-", "").substringBefore("/").toIntOrNull() ?: 1
                 val episodeNumber = epLink.substringAfter("-episode-", "").substringBefore("/").toIntOrNull()
 
-                episodes.add(Episode(
-                    data = epLink,
-                    name = epName,
-                    season = seasonNumber,
-                    episode = episodeNumber
-                ))
+                episodes.add(
+                    Episode(
+                        data = epLink,
+                        name = epName,
+                        season = seasonNumber,
+                        episode = episodeNumber
+                    )
+                )
             }
 
-            return newTvSeriesLoadResponse(title, url, TvType.TvSeries, episodes) {
+            newTvSeriesLoadResponse(title, url, TvType.TvSeries, episodes) {
                 this.posterUrl = poster
                 this.plot = description
             }
         } else {
-            return newMovieLoadResponse(title, url, TvType.Movie, url) {
+            newMovieLoadResponse(title, url, TvType.Movie, url) {
                 this.posterUrl = poster
                 this.plot = description
             }
