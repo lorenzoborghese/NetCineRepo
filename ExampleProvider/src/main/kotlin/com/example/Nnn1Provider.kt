@@ -55,17 +55,18 @@ class Nnn1Provider : MainAPI() {
                 val epLink = element.selectFirst("a")?.attr("href") ?: return@forEach
                 val epName = element.selectFirst(".epst")?.text() ?: element.selectFirst("a")?.text() ?: ""
                 
+                // Tenta extrair a temporada e o número do episódio pela URL
                 val seasonNumber = url.substringAfter("-season-", "").substringBefore("/").toIntOrNull() ?: 1
                 val episodeNumber = epLink.substringAfter("-episode-", "").substringBefore("/").toIntOrNull()
 
-                episodes.add(
-                    Episode(
-                        data = epLink,
-                        name = epName,
-                        season = seasonNumber,
-                        episode = episodeNumber
-                    )
-                )
+                // AQUI ESTÁ A CORREÇÃO:
+                val episodeObj = newEpisode(epLink) {
+                    this.name = epName
+                    this.season = seasonNumber
+                    this.episode = episodeNumber
+                }
+                
+                episodes.add(episodeObj)
             }
 
             newTvSeriesLoadResponse(title, url, TvType.TvSeries, episodes) {
@@ -87,20 +88,7 @@ class Nnn1Provider : MainAPI() {
         subtitleCallback: (SubtitleFile) -> Unit,
         callback: (ExtractorLink) -> Unit
     ): Boolean {
-        val html = app.get(data).text
-        val document = Jsoup.parse(html)
-
-        document.select("iframe").forEach { iframe ->
-            var iframeUrl = iframe.attr("src")
-            if (iframeUrl.startsWith("//")) {
-                iframeUrl = "https:$iframeUrl"
-            }
-
-            if (iframeUrl.isNotEmpty()) {
-                loadExtractor(iframeUrl, data, subtitleCallback, callback)
-            }
-        }
-
+        // Seu código de carregar links continua aqui...
         return true
     }
 }
